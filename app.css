@@ -1,0 +1,58 @@
+ .map-legends.wax-legends {
+    background: rgba(0,0,0,.8);
+    }  
+    
+.legend .legend-title {
+    text-align: Center;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 120%;
+    color: rgb(240,240,240);
+    }
+
+.legend .legend-text p {
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 100%;
+    color: rgb(240,240,240);
+    }
+
+.legend .legend-class  {
+    display: block;
+    float: left;
+    margin-bottom: 6px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 100%;
+    color: rgba(255,255,255,0.9);
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    }
+
+    .legend .legend-class img {
+      padding-right: 10px;
+      vertical-align: middle;
+    }
+
+    .legend .legend-class span {
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+   .legend .legend-source {
+    font-size: 90%;
+    color: #d3d3d3;
+    clear: both;
+    }
+  .legend a {
+    color: #d3d3d3;
+    }
+  .legend .legend-feedback {
+    font-size: 90%;
+    color: #d3d3d3;
+    clear: both;
+    }
+
+
+

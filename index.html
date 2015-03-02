@@ -2,10 +2,11 @@
 <html>
 <head>
 <meta charset=utf-8 />
-<title>Vaxmap</title>
+<title>MN Kindergarten Vax Rates</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+<link href='app.css' rel='stylesheet' />
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -14,10 +15,40 @@
 <body>
 
 <div id='map'></div>
+<div id='legend-content' style='display:none;'>
+<div class='legend'>
+<div class='legend-title'>Kindergarten Students Not Vaccinated</div>
+<div class='legend-title'>2013-2014 School Year</div>
+<div class='legend-text'>
+	<p>The Minnesota Department of Health publishes an annual report on Kindergarten vaccination rates for the diphtheria, tetanus, and pertussis (DTaP); polio; measles, mumps and rubella (MMR); hepatitis B; and varicella chickenpox) vaccines. 
+	</p>
+	<p>Students categorized as not vaccinated are students with one of two different types of legal exemption waivers. These exemptions in Minnesota remain low, with less than 3 percent of students having a conscientious objection from all vaccines, and less than 0.05 percent having a medical exemption from all vaccines.
+	</p>
+</div>
+<div class='legend-title'>Percent Not Vaccinated for MMR</div>
+<!-- Note, URLs to images need to be absolute, not relative  -->
+<div class = 'legend-class'><img src="http://fawcett.github.io/vaxmap/images/green.png">&nbsp;&nbsp;&nbsp;0%</div>
+<div class = 'legend-class'><img src="http://fawcett.github.io/vaxmap/images/red.png">> 0% (size proportional to rate)</div>
+<div class='legend-source'>Vaccination Rate Source: <a href="http://www.health.state.mn.us/divs/idepc/immunize/stats/school/index.html">Minnesota Dept. of Health</a></div>
+<div class='legend-source'>School Location Source: <a href="https://gisdata.mn.gov/dataset/struc-school-program-locs">Minnesota Dept. of Education</a></div>
+<div class='legend-feedback'> <a href="mailto:david.fawcett@gmail.com">Feedback</a></div>
+</div>
+</div>
+</div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiZmxhdGxhbmRtYXBzIiwiYSI6IldOSXVCWWMifQ.HhYmSncMHxdF_TGZbXo9sQ';
-var map = L.mapbox.map('map', 'flatlandmaps.9dfbb7f8')
-    .setView([46.2, -93.50], 6);
+
+var map = L.mapbox.map('map');
+map.setView([46.2, -93.50], 6);
+
+L.mapbox.tileLayer('flatlandmaps.9dfbb7f8').addTo(map);
+var myGridLayer = L.mapbox.gridLayer('flatlandmaps.9dfbb7f8').addTo(map);
+
+var myGridControl = L.mapbox.gridControl(myGridLayer,{follow:true}).addTo(map);
+
+map.legendControl.addLegend(document.getElementById('legend-content').innerHTML).setPosition('bottomleft');
+
+map.gridLayer.follow
 </script>
 
 </body>
